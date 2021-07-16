@@ -3,6 +3,12 @@ import { Route } from "react-router-dom"
 import { FriendProvider } from "./friend/FriendProvider"
 import { FriendCard } from "./friend/FriendCard"
 import { FriendList } from "./friend/FriendList"
+import { MessageList } from "./messages/MessageList"
+import { MessageProvider } from "./messages/MessageProvider"
+import { MessageForm } from "./messages/MessageForm"
+import { MessageCard } from "./messages/MessageCard"
+import { MessageDetail } from "./messages/MessageDetail"
+// import { UserProvider } from "./users/UserProvider"
 
 export const ApplicationViews = () => {
   return (
@@ -11,20 +17,36 @@ export const ApplicationViews = () => {
       <Route exact path="/">
         {/* Render the component for news articles */}
       </Route>
+
       <FriendProvider>
         <Route path="/friends"><FriendList />
           {/* Render the component for list of friends */}
         </Route>
       </FriendProvider>
-      <Route path="/messages">
-        {/* Render the component for the messages */}
-      </Route>
+
+      <MessageProvider>
+        {/* <UserProvider> */}
+          <Route exact path="/messages">
+            <MessageList />
+          </Route>
+          <Route exact path= "/messages/create">
+            <MessageForm />
+          </Route>
+          <Route exact path="/messages/detail/:messageId(\d+)">
+            <MessageDetail />
+          </Route>
+        {/* </UserProvider> */}
+      </MessageProvider>
+      
+
       <Route path="/tasks">
         {/* Render the component for the user's tasks */}
       </Route>
+
       <Route path="/events">
         {/* Render the component for the user's events */}
       </Route>
+
     </>
   )
 }
