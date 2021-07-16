@@ -5,6 +5,7 @@ import { FriendCard } from "./friend/FriendCard"
 import { FriendList } from "./friend/FriendList"
 import { TaskProvider } from "./task/TaskProvider"
 import { TaskList } from "./task/TaskList"
+import { TaskForm } from "./task/TaskForm"
 
 export const ApplicationViews = () => {
   return (
@@ -22,10 +23,16 @@ export const ApplicationViews = () => {
         {/* Render the component for the messages */}
       </Route>
       <TaskProvider>
-        <Route path="/tasks">
+
+        <Route exact path="/tasks">
           {/* Render the component for the user's tasks */}
-        <TaskList />
+          <TaskList />
         </Route>
+
+        <Route  path="/tasks/create">
+            <TaskForm />
+        </Route>
+
       </TaskProvider>
       <Route path="/events">
         {/* Render the component for the user's events */}
