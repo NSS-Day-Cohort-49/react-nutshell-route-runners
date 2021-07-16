@@ -3,6 +3,8 @@ import { Route } from "react-router-dom"
 import { FriendProvider } from "./friend/FriendProvider"
 import { FriendCard } from "./friend/FriendCard"
 import { FriendList } from "./friend/FriendList"
+import { TaskProvider } from "./task/TaskProvider"
+import { TaskList } from "./task/TaskList"
 
 export const ApplicationViews = () => {
   return (
@@ -19,9 +21,12 @@ export const ApplicationViews = () => {
       <Route path="/messages">
         {/* Render the component for the messages */}
       </Route>
-      <Route path="/tasks">
-        {/* Render the component for the user's tasks */}
-      </Route>
+      <TaskProvider>
+        <Route path="/tasks">
+          {/* Render the component for the user's tasks */}
+        <TaskList />
+        </Route>
+      </TaskProvider>
       <Route path="/events">
         {/* Render the component for the user's events */}
       </Route>
