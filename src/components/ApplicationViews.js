@@ -1,7 +1,6 @@
 import React from "react"
 import { Route } from "react-router-dom"
 import { FriendProvider } from "./friend/FriendProvider"
-import { FriendCard } from "./friend/FriendCard"
 import { FriendList } from "./friend/FriendList"
 
 export const ApplicationViews = () => {
@@ -12,9 +11,12 @@ export const ApplicationViews = () => {
         {/* Render the component for news articles */}
       </Route>
       <FriendProvider>
-        <Route path="/friends"><FriendList />
-          {/* Render the component for list of friends */}
+        <Route path="/friends">
+          <FriendList />
         </Route>
+        {/* <Route exact path="/friends/create">
+          <SearchFriend />
+      </Route> */}
       </FriendProvider>
       <Route path="/messages">
         {/* Render the component for the messages */}
