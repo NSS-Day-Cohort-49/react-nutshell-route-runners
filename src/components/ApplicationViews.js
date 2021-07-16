@@ -3,6 +3,9 @@ import { Route } from "react-router-dom"
 import { FriendProvider } from "./friend/FriendProvider"
 import { FriendCard } from "./friend/FriendCard"
 import { FriendList } from "./friend/FriendList"
+import { EventProvider } from "../events/EventProvider"
+import { EventList } from "../events/EventList"
+import { EventForm } from "../events/EventForm"
 
 export const ApplicationViews = () => {
   return (
@@ -22,9 +25,17 @@ export const ApplicationViews = () => {
       <Route path="/tasks">
         {/* Render the component for the user's tasks */}
       </Route>
-      <Route path="/events">
-        {/* Render the component for the user's events */}
-      </Route>
+      <EventProvider>
+        <Route exact path="/events">
+          <EventList />
+        </Route>
+        <Route path="/events/create">
+          <EventForm />
+        </Route>
+        <Route path="/events/edit/:eventId(\d+)">
+          <EventForm />
+        </Route>
+      </EventProvider>
     </>
   )
 }

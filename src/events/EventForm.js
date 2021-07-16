@@ -7,6 +7,7 @@ import "./Event.css"
 export const EventForm = () => {
     const { addEvent, getEventById, getEvents, updateEvent } = useContext(EventContext)
 
+  
     const [event, setEvent] = useState({
 
         name: "",
@@ -18,12 +19,9 @@ export const EventForm = () => {
       getEvents()
   }, [])
 
-
     const [isLoading, setIsLoading] = useState(true);
-
-  
     const { eventId } = useParams();
-      const history = useHistory();
+    const history = useHistory();
  
 
       const handleControlledInputChange = (controlEvent) => {
@@ -39,24 +37,22 @@ export const EventForm = () => {
   
       const handleClickSaveEvent = (controlEvent) => {
         controlEvent.preventDefault() 
-      
-    
-        if (parseInt(event.eventId) === 0) {
-            window.alert("Please select a location")
-        } else {
-          setIsLoading(true);
+        if (event.location === "" || event.name === "" || event.date === "") {
+            window.alert("Please fill in all fields")
         
-        } if  (eventId){
-            updateEvent({
-                id: eventId,
-                name: event.name,
-                date: event.date,
-                location: event.location
-                
-                
-            })
-            .then(() => history.push("/events"))
-          } else {
+    } else {
+        setIsLoading(true);
+        
+    } if  (eventId){
+        updateEvent({
+            id: eventId,
+            name: event.name,
+            date: event.date,
+            location: event.location
+            
+        })
+        .then(() => history.push("/events"))
+    } else {
             addEvent({
                 name: event.name,
                 date: event.date,
