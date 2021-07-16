@@ -4,32 +4,39 @@
     justify-content: space-between;
   }
   
+
+ 
   .event, .eventCard {
-      flex-basis: 28%;
+     
       margin: 1em;
       padding: 1em;
       border: 8px solid rgb(199, 192, 240);
-      min-width: 500px;
-      max-width: 600px;
+      max-width: 500px;
+      -webkit-box-shadow: 5px 5px 15px 5px lightgrey; 
+      box-shadow: 5px 5px 15px 5px #000000;
     
   }
-  .eventList {
-      flex-basis: 50%;
-  }
+
   .eventButton {
       margin: .25em
   }
 
   .eventCard {
-    display: flex
+    display: flex;
+   
   }
   .weatherAndButtons {
-      flex-basis: 30%;
+    flex-basis: 50%;
     margin-left: 2em;
     
+   
+     
   }
   .weatherPic {
       max-width: 300px;
       display:flex;
       border: 8px groove #7c83da;
+      
   }
+
+  

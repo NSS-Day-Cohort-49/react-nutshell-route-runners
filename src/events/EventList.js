@@ -9,13 +9,19 @@ export const EventList = () => {
 const { events, getEvents } = useContext(EventContext)    
 const history = useHistory()
 
-const sortedEvents = events.sort((a,b) => {
+let sortedEvents = events.sort((a,b) => {
     return parseInt(a.date.split("-").join("")) - parseInt(b.date.split("-").join(""))
   })
 
+let closestEvent = sortedEvents.slice(0,1)
+
+  
+
 useEffect(() => {
     getEvents()
-  }, [])
+}, [])
+
+
 
   return (
      <>
@@ -26,6 +32,7 @@ useEffect(() => {
             Add Event
           </button>
       {
+       
         sortedEvents.map(event => {
           return <EventCard key={event.id}
                       event={event} />
@@ -34,4 +41,5 @@ useEffect(() => {
     </div>
    </> 
   )
+
 }

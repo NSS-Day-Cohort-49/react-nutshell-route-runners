@@ -16,11 +16,10 @@ import React, { useContext }from "react"
           history.push("/events")
         })
     }
-    
+  
     
   return   (
       <div className="eventCard">
-      
       <section className="eventList" id="eventId">
           <h3 className="eventName">{event.name}</h3>
           <div className="eventDate">Date:  {event.date}</div>
