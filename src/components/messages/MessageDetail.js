@@ -21,9 +21,9 @@ export const MessageDetail = () => {
     }, [])
     
     const handleRelease = () => {
-        releaseAnimal(animal.id)
+        releaseMessage(message.id)
             .then(() => {
-                history.push("/animals")
+                history.push("/messages")
             })
     }
 
@@ -31,7 +31,7 @@ export const MessageDetail = () => {
         <section className="message">
         <h3 className="message__textArea">{message.textArea}</h3>
         <div className="message__user">user: {message.user?.name}</div>
-        <button onClick={handleRelease}>Release Animal</button>
+        <button onClick={handleRelease}>Release Message</button>
         </section>
     )
     }

@@ -16,10 +16,6 @@ export const MessageForm = () => {
 
     const history = useHistory
 
-    // useEffect(() => {
-    //     getUsers()
-    // }, []);
-
     const handleControlledInputChange = (event) => {
         const newMessage = { ...message }
         newMessage[event.target.id] = event.target.value
