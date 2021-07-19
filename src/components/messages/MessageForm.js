@@ -58,20 +58,17 @@ export const MessageForm = () => {
             </div>
         </fieldset>
         <fieldset>
-            <div className="form-group">
-            <label htmlFor="date">todays date:</label>
-            <input
-                type="text"
-                id="date"
-                required
-                autoFocus
-                className="form-control"
-                placeholder="Message date"
-                value={message.date}
-                onChange={handleControlledInputChange}
-                />
-            </div>
-        </fieldset>
+                <div className="form-group">
+                    <label htmlFor="date">message date</label>
+                    <input type="date" 
+                    id="date" 
+                    required autoFocus className="form-control" 
+                    placeholder="Message Date" 
+                    value={message.date} 
+                    onChange={handleControlledInputChange} 
+                    />
+                </div>
+            </fieldset>
         <button className="btn btn-primary" onClick={handleClickSaveMessage}>
             Save Message
         </button>
