@@ -25,7 +25,7 @@ export const FriendList = () => {
       </button>
       <div className="friends">
     {
-      friends.map(friend => { if(friend.currentUserId == sessionStorage.getItem("nutshell_user")){
+      friends.map(friend => { if(friend.currentUserId === sessionStorage.getItem("nutshell_user")){
          return <FriendCard key={friend.id} user={friend} />
 
       }})
