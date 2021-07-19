@@ -13,15 +13,9 @@ let sortedEvents = events.sort((a,b) => {
     return parseInt(a.date.split("-").join("")) - parseInt(b.date.split("-").join(""))
   })
 
-let closestEvent = sortedEvents.slice(0,1)
-
-  
-
 useEffect(() => {
     getEvents()
 }, [])
-
-
 
   return (
      <>

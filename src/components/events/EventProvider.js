@@ -46,8 +46,8 @@
            })
              .then(getEvents)
          }
-   
-       
+         
+        
    
        return (
            <EventContext.Provider value={{
