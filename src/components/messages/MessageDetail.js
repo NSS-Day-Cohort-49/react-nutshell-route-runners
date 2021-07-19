@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react"
 import { MessageContext } from "./MessageProvider"
 import { useParams, useHistory } from "react-router-dom"
 
-const  history = useHistory()
+
 
 
 export const MessageDetail = () => {
@@ -11,6 +11,8 @@ export const MessageDetail = () => {
     const [message, setMessage] = useState({})
 
     const {messageId} = useParams();
+
+    const  history = useHistory()
 
     useEffect(() => {
         console.log("useEffect", messageId)
