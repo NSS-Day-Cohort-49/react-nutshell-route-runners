@@ -44,6 +44,7 @@
     min-width: 500px;
     box-shadow: 10px 10px 25px 10px #000000;
     margin: 2em;
+    font-style: oblique;
     font-weight: bolder;
     background-color:#f8f8ff;
     font-size: 16px;
@@ -56,8 +57,9 @@
     min-width: 500px;
     box-shadow: 5px 5px 15px 5px #000000;
     margin: 1em;
-    font-weight: bold ;
-    background-color: white;
+    font-style: italic;
+    font-weight:  light;
+    background-color: cornsilk;
     font-size: 16px;
 
 
