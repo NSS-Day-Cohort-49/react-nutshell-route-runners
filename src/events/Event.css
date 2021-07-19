@@ -1,0 +1,49 @@
+.events {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+
+ 
+  .event, .eventCard {
+     
+      margin: 1em;
+      padding: 1em;
+      border: 8px solid rgb(199, 192, 240);
+      max-width: 500px;
+      -webkit-box-shadow: 5px 5px 15px 5px lightgrey; 
+      box-shadow: 5px 5px 15px 5px #000000;
+    
+  }
+
+  .eventButton {
+      margin: .25em
+  }
+
+  .eventCard {
+    display: flex;
+   
+  }
+  .weatherAndButtons {
+    flex-basis: 50%;
+    margin-left: 2em;
+    
+   
+     
+  }
+  .weatherPic {
+      max-width: 300px;
+      display:flex;
+      border: 8px groove #7c83da;
+      
+  }
+
+  .allEvents > .eventCard {
+    border: 1px solid red;
+}
+
+.allEvents > .eventCard ~ .eventCard {
+    border: 8px solid rgb(199, 192, 240);
+}
+  
