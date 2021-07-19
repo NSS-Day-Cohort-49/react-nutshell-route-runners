@@ -14,7 +14,7 @@ export const ApplicationViews = () => {
         {/* Render the component for news articles */}
       </Route>
       <FriendProvider>
-        <Route path="/friends">
+        <Route  path="/friends">
           <FriendList />
         </Route>
         {/* <Route exact path="/friends/create">
