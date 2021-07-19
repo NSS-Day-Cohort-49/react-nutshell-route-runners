@@ -8,9 +8,9 @@ import { FriendList } from "./friend/FriendList"
 import { TaskProvider } from "./task/TaskProvider"
 import { TaskList } from "./task/TaskList"
 import { TaskForm } from "./task/TaskForm"
-import { EventProvider } from "../events/EventProvider"
-import { EventList } from "../events/EventList"
-import { EventForm } from "../events/EventForm"
+import { EventProvider } from "./events/EventProvider"
+import { EventList } from "./events/EventList"
+import { EventForm } from "./events/EventForm"
 
 export const ApplicationViews = () => {
   return (
