@@ -39,4 +39,11 @@
       
   }
 
+  .allEvents > .eventCard {
+    border: 1px solid red;
+}
+
+.allEvents > .eventCard ~ .eventCard {
+    border: 8px solid rgb(199, 192, 240);
+}
   
