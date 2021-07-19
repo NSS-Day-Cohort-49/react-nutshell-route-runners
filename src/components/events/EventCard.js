@@ -1,6 +1,7 @@
 import React, { useContext }from "react"
   import { EventContext } from "./EventProvider"
   import { useHistory } from "react-router-dom"
+  import { Weather } from "./EventWeather"
   import "./Event.css"
 
 
@@ -28,12 +29,13 @@ import React, { useContext }from "react"
       </section>
       <article className="weatherAndButtons">
           <img className="weatherPic" src="https://media.gettyimages.com/photos/concept-photo-oxygen-with-white-cloud-picture-id1176356747?k=6&m=1176356747&s=612x612&w=0&h=65o22MsDpULjY-Y0X2X3ajpPSy2X5_ciTkzHZQBHjTA=" alt=""></img>
+          <section className="weather__container"></section>
           <div className="eventButtons">
-          {/* <button className="eventButton" onClick={() => {
+          <button className="eventButton" onClick={() => {
               history.push(`/events/edit/${event.id}`)
-            }}>Edit</button> */}
-          {/* <button className="eventButton" onClick={handleRelease}>Delete Event</button>
-          <button className="eventButton">Show Weather</button> */}
+            }}>Edit</button>
+          <button className="eventButton" onClick={handleRelease}>Delete Event</button>
+          <button className="eventButton">Show Weather</button>
          </div>
       </article>
 
