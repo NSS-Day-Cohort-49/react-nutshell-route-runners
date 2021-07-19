@@ -24,6 +24,9 @@ export const ApplicationViews = () => {
         <Route path="/friends">
           <FriendList />
         </Route>
+        {/* <Route exact path="/friends/create">
+          <SearchFriend />
+      </Route> */}
       </FriendProvider>
       <Route path="/messages">
         {/* Render the component for the messages */}
