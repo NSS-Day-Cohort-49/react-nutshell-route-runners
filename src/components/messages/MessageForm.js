@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
 import { MessageContext } from "./MessageProvider"
-// import { UserContext } from "../user/UserProvider"
+import { UserContext } from "../user/UserProvider"
 
 export const MessageForm = () => {
     const { addMessage } = useContext(MessageContext)
-    // const { users, getUsers } = useContext(UserContext)
+    const { users, getUsers } = useContext(UserContext)
 
     const [message, setMessage] = useState({
             textArea: "",
@@ -67,6 +67,25 @@ export const MessageForm = () => {
                     value={message.date} 
                     onChange={handleControlledInputChange} 
                     />
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="date">message sent to</label>
+                    <select
+                        id="user" 
+                        required autoFocus className="form-control" 
+                        placeholder="Message receiver" 
+                        value={message.userId} 
+                        onChange={handleControlledInputChange} 
+                    >
+                        <option value="0"> Select User</option>
+                        {users.map((l) => (
+                        <option key={l.id} value={l.id}>
+                            {l.name}
+                        </option>
+                        ))}
+                    </select>
                 </div>
             </fieldset>
         <button className="btn btn-primary" onClick={handleClickSaveMessage}>
