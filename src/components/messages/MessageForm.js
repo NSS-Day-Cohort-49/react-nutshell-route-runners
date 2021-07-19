@@ -14,7 +14,7 @@ export const MessageForm = () => {
             timeStamp: 0,
     });
 
-    const history = useHistory
+    const history = useHistory()
 
     const handleControlledInputChange = (event) => {
         const newMessage = { ...message }
@@ -27,10 +27,7 @@ export const MessageForm = () => {
 
         const userId = parseInt(message.userId)
 
-        // if (userId === 0) {
-        // window.alert("Please select a user")
-        // } else
-        {
+    
 
         const newMessage = {
             textArea: message.textArea,
@@ -39,7 +36,7 @@ export const MessageForm = () => {
             timeStamp: message.timeStamp,
         }
         addMessage(newMessage).then(() => history.push("/messages"))
-        }
+        
     }
 
     return(

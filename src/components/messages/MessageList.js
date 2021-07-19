@@ -11,6 +11,7 @@ export const MessageList = () => {
 
     // Initialization effect hook -> Go get animal data
     useEffect(()=>{
+        console.log("MessageList: useEffect - getMessages", messages)
         getMessages()
     }, [])
 
@@ -19,7 +20,7 @@ export const MessageList = () => {
             <h1>Messages</h1>
 
             <button onClick={() => history.push("/messages/create")}>
-            Write a new Message
+                Write a new Message
             </button>
             <div className="messages">
             {

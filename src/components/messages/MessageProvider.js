@@ -23,7 +23,7 @@ export const MessageProvider = (props) => {
     }
 
     const getMessageById = (id) => {
-        return fetch(`http://localhost:8088/animals/${id}?_expand=user`)
+        return fetch(`http://localhost:8088/messages/${id}?_expand=user`)
         .then(res => res.json())
     }
 
@@ -38,7 +38,7 @@ export const MessageProvider = (props) => {
         <MessageContext.Provider value={{
             messages, getMessages, addMessage, getMessageById, releaseMessage
         }}>
-            {props.childern}
+            {props.children}
         </MessageContext.Provider>
     )
 }

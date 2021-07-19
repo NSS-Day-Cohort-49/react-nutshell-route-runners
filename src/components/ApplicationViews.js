@@ -45,10 +45,10 @@ export const ApplicationViews = () => {
           <Route exact path="/messages">
             <MessageList />
           </Route>
-          <Route exact path= "/messages/create">
+          <Route path= "/messages/create">
             <MessageForm />
           </Route>
-          <Route exact path="/messages/detail/:messageId(\d+)">
+          <Route path="/messages/detail/:messageId(\d+)">
             <MessageDetail />
           </Route>
         {/* </UserProvider> */}
