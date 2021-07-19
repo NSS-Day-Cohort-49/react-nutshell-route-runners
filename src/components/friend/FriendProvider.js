@@ -27,6 +27,7 @@ export const FriendProvider = (props) => {
             body: JSON.stringify(friendObj)
         })
         .then(response => response.json())
+        .then(getFriends)
     }
 
 const deleteFriend = friendId => {
