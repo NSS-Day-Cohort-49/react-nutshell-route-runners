@@ -5,6 +5,7 @@ import { ArticleList } from "./article/ArticleList"
 import { ArticleForm } from "./article/ArticleForm"
 import { FriendProvider } from "./friend/FriendProvider"
 import { FriendList } from "./friend/FriendList"
+import { SearchFriend } from "./friend/SearchFriend"
 import { TaskProvider } from "./task/TaskProvider"
 import { TaskList } from "./task/TaskList"
 import { TaskForm } from "./task/TaskForm"
@@ -27,16 +28,17 @@ export const ApplicationViews = () => {
       </ArticleProvider>
       
       <FriendProvider>
+        <Route path="/friends/create">
+          <SearchFriend />
+        </Route>
         <Route  path="/friends">
           <FriendList />
         </Route>
-        {/* <Route exact path="/friends/create">
-          <SearchFriend />
-      </Route> */}
       </FriendProvider>
       <Route path="/messages">
         {/* Render the component for the messages */}
       </Route>
+
       <TaskProvider>
 
         <Route exact path="/tasks">

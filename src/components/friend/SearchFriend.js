@@ -1,26 +1,44 @@
+import React, { useContext } from "react"
+import { FriendContext } from "./FriendProvider"
+import { useState, useEffect } from "react"
+import { FriendCard } from "./FriendCard"
+import "./Friend.css"
 
-    // const handleAddFriend = (userId) => {
-    //     addFriend({
-    //         userId: userId,
-    //         currentUserId: parseInt(sessionStorage.getItem("nutshell_user"))
-    //     })
-    //         .then(() => history.push("/"))
-    // }
-    // if (user.currentUserId == sessionStorage.getItem("nutshell_user")) {
-        // return (
-        //     <>
-        //     <section className="friend">
-        //         <h3 className="friend__name">{user.user.name}</h3>
-        //         <button onClick={event => { deleteFriend(user.id) }}>Unfriend</button>
+export const SearchFriend = () => {
+    const { getUsers, users } = useContext(FriendContext)
 
-        //     </section>
-        //     </>
-        // )
-//     }
-//     else return (
-//         <section className="friend">
-//             <h3 className="friend__name">{user.name}</h3>
-//             <button onClick={event => { handleAddFriend(user.id) }}>Add Friend</button>
+    const [filteredUsers, setFiltered] = useState([])
+    const [searchTerms, setSearchTerms] = useState("")
 
-//         </section>
-//     )
+   
+
+
+    useEffect(() => {
+        getUsers().then(() => {
+        if (searchTerms !== "") {
+            const subset = users.filter(user => user.name.toLowerCase().includes(searchTerms.toLowerCase()))
+            setFiltered(subset)
+
+        } 
+        })
+    }, [searchTerms])
+
+
+
+    
+    return (
+        
+        <>
+            User Search:
+            <input type="text"
+                className="input--wide"
+                onKeyUp={(event) => setSearchTerms(event.target.value)}
+                placeholder="Search for an user... " />
+             <div className="friends">{
+                filteredUsers.map(user => {
+                    return <FriendCard key={user.id} user={user} />
+            })}
+            </div> 
+        </>
+    )
+}
