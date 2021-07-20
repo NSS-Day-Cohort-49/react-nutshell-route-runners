@@ -2,7 +2,7 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router-dom"
 import { EventContext } from "./EventProvider"
-import { LocationContext } from "./EventLocationProvider.js"
+import { LocationContext } from "./LocationProvider.js"
 import "./Event.css"
 
 export const EventForm = () => {
@@ -37,7 +37,15 @@ export const EventForm = () => {
           newEvent[controlEvent.target.id] = selectedVal
           setEvent(newEvent)
         }
-  
+    //   const handleLocationSelect = (handleEvent) => {
+    //       if (handleEvent.target.id === "locationId"){
+    //       const selectedLocation = handleEvent.target.value
+    //       const weatherLocation = locations.find(location => location.id === selectedLocation)
+    //       const weatherLocationEvent = new 
+           
+
+    //   }}
+
       const handleClickSaveEvent = (controlEvent) => {
         controlEvent.preventDefault() 
         const locationId = parseInt(event.locationId)
