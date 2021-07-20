@@ -1,42 +1,95 @@
 import React, { useContext, useEffect, useState } from "react"
-import { useHistory, useParems } from 'react-router-dom';
-import { ArticleContext } from "../article/ArticleProvider"
+import { useHistory, useParams } from 'react-router-dom';
+import { ArticleContext } from "./ArticleProvider"
 import "./Article.css"
 
 export const ArticleForm = () => {
-  const { addArticle } = useContext(ArticleContext)
+  const { addArticle, getArticleById, getArticles, updateArticle } = useContext(ArticleContext)
 
   const [article, setArticle] = useState({
     title: "",
     url: "",
-    synopsis: "",
+    synopsis: ""
   });
 
+  useEffect(() => {
+    getArticles()
+}, [])
+
+  const [isLoading, setIsLoading] = useState(true);
+  const { articleId } = useParams();
   const history = useHistory();
 
-  const handleControlledInputChange = (event) => {
-
+  const handleControlledInputChange = (controlArticle) => {
     const newArticle = { ...article }
-
-    newArticle[event.target.id] = event.target.value
-
-    setArticle(newArticle)
+    let selectedVal = controlArticle.target.value
+        
+    if (controlArticle.target.id.includes("Id")) {
+     selectedVal = parseInt(selectedVal)
+    }
+     newArticle[controlArticle.target.id] = selectedVal
+     setArticle(newArticle)
   }
 
-  const handleClickSaveArticle = (event) => {
-    event.preventDefault()
+  // const newArticle = { ...article }
+  // newArticle[event.target.id] = event.target.value
+  // setArticle(newArticle)
 
-      const newArticle = {
+  const handleClickSaveArticle = (controlArticle) => {
+    controlArticle.preventDefault()
+    if (article.title === "" || article.url === "" || article.synopsis === "") {
+      window.alert("Please fill in all fields")
+        
+  } else {
+      setIsLoading(true);
+
+    } if  (articleId){
+      updateArticle({
+          id: articleId,
+          title: article.title,
+          url: article.url,
+          synopsis: article.synopsis,
+          timestamp: new Date().toLocaleDateString(),
+          userId: parseInt(sessionStorage.getItem("nutshell_user"))
+          
+      })
+      .then(() => history.push("/"))
+  } else {
+        addArticle({
         title: article.title,
         url: article.url,
         synopsis: article.synopsis,
         timestamp: new Date().toLocaleDateString(),
         userId: parseInt(sessionStorage.getItem("nutshell_user"))
-      }
-      addArticle(newArticle)
-        .then(() => history.push("/"))
-    
+      })
+      .then(() => history.push("/"))
+    }
   }
+
+  useEffect(() => {
+    getArticles().then(() => {
+      if (articleId) {
+        getArticleById(articleId)
+        .then(article => {
+            setArticle(article)
+            setIsLoading(false)
+        })
+      } else {
+        setIsLoading(false)
+      }
+    })
+  }, [])
+      
+
+  //     const newArticle = {
+  //       title: article.title,
+  //       url: article.url,
+  //       synopsis: article.synopsis,
+  //       timestamp: new Date().toLocaleDateString(),
+  //       userId: parseInt(sessionStorage.getItem("nutshell_user"))
+  //     }
+  //     addArticle(newArticle)
+  //       .then(() => history.push("/"))
 
   return (
       <>
@@ -60,7 +113,7 @@ export const ArticleForm = () => {
             <input type="text" id="synopsis" required autoFocus className="form-control" placeholder="Article synopsis" value={article.synopsis} onChange={handleControlledInputChange} />
             </div>
         </fieldset>
-        <button className="btn btn-primary" onClick={handleClickSaveArticle}>
+        <button className="btn btn-primary" disabled={isLoading} onClick={handleClickSaveArticle}>
             Save Article
             </button>
         </form>
