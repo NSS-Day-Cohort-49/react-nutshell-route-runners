@@ -21,9 +21,16 @@ export const TaskList = () => {
             </button>
             <div className="tasks">
                 {
-                    tasks.map(task => { if(task.userId == sessionStorage.getItem("nutshell_user")){
-                        return <TaskCard key={task.id} task={task} />
-                    }})
+                    tasks.map(task => { 
+                        if (task.isComplete === false) {
+
+                            if(task.userId == sessionStorage.getItem("nutshell_user")){
+                                return <TaskCard key={task.id} task={task} />
+                            }
+                        // else {
+                        //     return (null)
+                        // }
+                        }})
                 }
             </div>
         </>
