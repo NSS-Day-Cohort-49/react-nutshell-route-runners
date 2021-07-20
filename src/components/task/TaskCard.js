@@ -12,7 +12,7 @@ export const TaskCard = ({ task }) => {
         updateTask({
             id: task.id, 
             name: task.name,
-            isComplete: false,
+            isComplete: true,
             userId: task.userId
         })
         .then(() => history.push("/tasks"))
