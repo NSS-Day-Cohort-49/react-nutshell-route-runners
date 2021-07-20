@@ -57,6 +57,9 @@ export const ApplicationViews = () => {
           <Route path="/messages/detail/:messageId(\d+)">
             <MessageDetail />
           </Route>
+          <Route path="/messages/edit/:messageId(\d+)">
+              <MessageForm />
+          </Route>
         {/* </UserProvider> */}
       </MessageProvider>
       
@@ -68,6 +71,10 @@ export const ApplicationViews = () => {
 
         <Route  path="/tasks/create">
             <TaskForm />
+        </Route>
+
+        <Route path="/tasks/edit/:taskId(\d+)">
+          <TaskForm />
         </Route>
 
       </TaskProvider>

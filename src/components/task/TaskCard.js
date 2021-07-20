@@ -12,7 +12,7 @@ export const TaskCard = ({ task }) => {
         updateTask({
             id: task.id, 
             name: task.name,
-            isComplete: true,
+            isComplete: false,
             userId: task.userId
         })
         .then(() => history.push("/tasks"))
@@ -24,8 +24,11 @@ export const TaskCard = ({ task }) => {
             <h3 className="task__name">{task.name}</h3>
             <div className="task__date">{task.date}</div>
             <button onClick={() => { deleteTask(task.id) }}>Delete Task</button>
+            <button className="taskButton" onClick={() => {
+                history.push(`/tasks/edit/${task.id}`)
+              }}>Edit</button>
             <label htmlFor="checkbox">Mark as complete</label>
-            <input type="checkbox" id="checkbox" unchecked onChange={handleCheckBox} />
+            <input type="checkbox" id="checkbox" unchecked="" onChange={handleCheckBox} />
 
         </section>
     )
