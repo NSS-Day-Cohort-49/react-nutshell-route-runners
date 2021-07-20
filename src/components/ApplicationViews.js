@@ -12,6 +12,7 @@ import { TaskForm } from "./task/TaskForm"
 import { EventProvider } from "./events/EventProvider"
 import { EventList } from "./events/EventList"
 import { EventForm } from "./events/EventForm"
+import { LocationProvider } from "./events/EventLocationProvider.js"
 import { MessageList } from "./messages/MessageList"
 import { MessageProvider } from "./messages/MessageProvider"
 import { MessageForm } from "./messages/MessageForm"
@@ -73,6 +74,7 @@ export const ApplicationViews = () => {
         {/* Render the component for the user's tasks */}
       </Route>
       <EventProvider>
+      <LocationProvider>
         <Route exact path="/events">
           <EventList />
         </Route>
@@ -82,6 +84,7 @@ export const ApplicationViews = () => {
         <Route path="/events/edit/:eventId(\d+)">
           <EventForm />
         </Route>
+       </LocationProvider>
       </EventProvider>
     </>
   )

@@ -7,7 +7,7 @@
        const [events, setEvents] = useState([])
    
        const getEvents = () => {
-           return fetch("http://localhost:8088/events")
+           return fetch("http://localhost:8088/events?_expand=location")
            .then(res => res.json())
            .then(setEvents)
        }
@@ -46,7 +46,7 @@
            })
              .then(getEvents)
          }
-         
+      
         
    
        return (
