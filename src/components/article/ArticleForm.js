@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react"
+import { useHistory, useParems } from 'react-router-dom';
 import { ArticleContext } from "../article/ArticleProvider"
 import "./Article.css"
-import { useHistory } from 'react-router-dom';
 
 export const ArticleForm = () => {
   const { addArticle } = useContext(ArticleContext)
@@ -29,7 +29,9 @@ export const ArticleForm = () => {
       const newArticle = {
         title: article.title,
         url: article.url,
-        synopsis: article.synopsis
+        synopsis: article.synopsis,
+        timestamp: new Date().toLocaleDateString(),
+        userId: parseInt(sessionStorage.getItem("nutshell_user"))
       }
       addArticle(newArticle)
         .then(() => history.push("/"))
