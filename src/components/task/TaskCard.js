@@ -12,7 +12,7 @@ export const TaskCard = ({ task }) => {
         updateTask({
             id: task.id, 
             name: task.name,
-            isComplete: false,
+            isComplete: true,
             userId: task.userId
         })
         .then(() => history.push("/tasks"))
@@ -28,7 +28,7 @@ export const TaskCard = ({ task }) => {
                 history.push(`/tasks/edit/${task.id}`)
               }}>Edit</button>
             <label htmlFor="checkbox">Mark as complete</label>
-            <input type="checkbox" id="checkbox" unchecked onChange={handleCheckBox} />
+            <input type="checkbox" id="checkbox" unchecked="false" onChange={handleCheckBox} />
 
         </section>
     )
