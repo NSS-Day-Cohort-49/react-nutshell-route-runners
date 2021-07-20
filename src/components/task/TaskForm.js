@@ -27,7 +27,8 @@ export const TaskForm = () => {
         const newTask = {
             name: task.name,
             date: task.date,
-            userId: parseInt(sessionStorage.getItem("nutshell_user"))
+            userId: parseInt(sessionStorage.getItem("nutshell_user")),
+            isComplete: false
         }
         addTasks(newTask)
         .then(() => history.push("/tasks"))

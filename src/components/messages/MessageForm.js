@@ -10,7 +10,6 @@ export const MessageForm = () => {
     const [message, setMessage] = useState({
             textArea: "",
             date: "",
-            userId: 0,
             timeStamp: 0,
     });
 
@@ -25,15 +24,13 @@ export const MessageForm = () => {
     const handleClickSaveMessage = (event) => {
         event.preventDefault()
 
-        const userId = parseInt(message.userId)
-
-    
+        // const userId = parseInt(message.userId)
 
         const newMessage = {
             textArea: message.textArea,
             date: message.date,
-            userId: userId,
-            timeStamp: message.timeStamp,
+            userId: parseInt(sessionStorage.getItem("nutshell_user")),
+            timeStamp: Date.now(message.timeStamp),
         }
         addMessage(newMessage).then(() => history.push("/messages"))
         
@@ -58,20 +55,36 @@ export const MessageForm = () => {
             </div>
         </fieldset>
         <fieldset>
-            <div className="form-group">
-            <label htmlFor="date">todays date:</label>
-            <input
-                type="text"
-                id="date"
-                required
-                autoFocus
-                className="form-control"
-                placeholder="Message date"
-                value={message.date}
-                onChange={handleControlledInputChange}
-                />
-            </div>
-        </fieldset>
+                <div className="form-group">
+                    <label htmlFor="date">message date</label>
+                    <input type="date" 
+                    id="date" 
+                    required autoFocus className="form-control" 
+                    placeholder="Message Date" 
+                    value={message.date} 
+                    onChange={handleControlledInputChange} 
+                    />
+                </div>
+            </fieldset>
+            {/* <fieldset>
+                <div className="form-group">
+                    <label htmlFor="date">message sent to</label>
+                    <select
+                        id="user" 
+                        required autoFocus className="form-control" 
+                        placeholder="Message receiver" 
+                        value={message.userId} 
+                        onChange={handleControlledInputChange} 
+                    >
+                        <option value="0"> Select User</option>
+                        {users.map((l) => (
+                        <option key={l.id} value={l.id}>
+                            {l.name}
+                        </option>
+                        ))}
+                    </select>
+                </div>
+            </fieldset> */}
         <button className="btn btn-primary" onClick={handleClickSaveMessage}>
             Save Message
         </button>
