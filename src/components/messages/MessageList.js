@@ -24,9 +24,9 @@ export const MessageList = () => {
             </button>
             <div className="messages">
             {
-                messages.map(message => { if (message.userId == sessionStorage.getItem("nutshell_user")){
+                messages.map(message => {
                 return <MessageCard key={message.id} message={message} />
-                }})
+                })
             }
             </div>
         </>
