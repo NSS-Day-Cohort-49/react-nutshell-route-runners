@@ -2,21 +2,24 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router-dom"
 import { EventContext } from "./EventProvider"
+import { LocationContext } from "./LocationProvider.js"
 import "./Event.css"
 
 export const EventForm = () => {
     const { addEvent, getEventById, getEvents, updateEvent } = useContext(EventContext)
+    const { locations, getLocations } = useContext(LocationContext)
 
   
     const [event, setEvent] = useState({
 
         name: "",
         date: "",
-        location: ""
+        locationId: ""
     });
 
     useEffect(() => {
       getEvents()
+      .then(getLocations())
   }, [])
 
     const [isLoading, setIsLoading] = useState(true);
@@ -34,9 +37,18 @@ export const EventForm = () => {
           newEvent[controlEvent.target.id] = selectedVal
           setEvent(newEvent)
         }
-  
+    //   const handleLocationSelect = (handleEvent) => {
+    //       if (handleEvent.target.id === "locationId"){
+    //       const selectedLocation = handleEvent.target.value
+    //       const weatherLocation = locations.find(location => location.id === selectedLocation)
+    //       const weatherLocationEvent = new 
+           
+
+    //   }}
+
       const handleClickSaveEvent = (controlEvent) => {
         controlEvent.preventDefault() 
+        const locationId = parseInt(event.locationId)
         if (event.location === "" || event.name === "" || event.date === "") {
             window.alert("Please fill in all fields")
         
@@ -48,7 +60,7 @@ export const EventForm = () => {
             id: eventId,
             name: event.name,
             date: event.date,
-            location: event.location
+            locationId: locationId
             
         })
         .then(() => history.push("/events"))
@@ -56,7 +68,7 @@ export const EventForm = () => {
             addEvent({
                 name: event.name,
                 date: event.date,
-                location: event.location,
+                locationId: locationId,
                 
             })
             .then(() => history.push("/events"))
@@ -64,7 +76,9 @@ export const EventForm = () => {
         }
       
         useEffect(() => {
-          getEvents().then(() => {
+          getEvents()
+          .then(getLocations())
+          .then(() => {
             if (eventId) {
               getEventById(eventId)
               .then(event => {
@@ -99,8 +113,14 @@ export const EventForm = () => {
           <fieldset>
             <div className="form-group">
                     <label htmlFor="location">Event Location:</label>
-                    <input type="text" id="location" 
-                    onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Please enter location" value={event.location}/>
+                    <select name="locationId" id="locationId" className="form-control" value={event.locationId} onChange={handleControlledInputChange}>
+                <option value="0">Select a location</option>
+                {locations.map(l => (
+                  <option key={l.id} value={l.id}>
+                    {l.name}
+                  </option>
+                ))}
+              </select>
                 </div>
           </fieldset>
             <button className="btn btn-primary"
