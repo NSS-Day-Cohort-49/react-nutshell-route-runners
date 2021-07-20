@@ -1,16 +1,15 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
 import { MessageContext } from "./MessageProvider"
-import { UserContext } from "../user/UserProvider"
+// import { UserContext } from "../user/UserProvider"
 
 export const MessageForm = () => {
     const { addMessage } = useContext(MessageContext)
-    const { users, getUsers } = useContext(UserContext)
+    // const { users, getUsers } = useContext(UserContext)
 
     const [message, setMessage] = useState({
             textArea: "",
             date: "",
-            userId: 0,
             timeStamp: 0,
     });
 
@@ -25,15 +24,13 @@ export const MessageForm = () => {
     const handleClickSaveMessage = (event) => {
         event.preventDefault()
 
-        const userId = parseInt(message.userId)
-
-    
+        // const userId = parseInt(message.userId)
 
         const newMessage = {
             textArea: message.textArea,
             date: message.date,
-            userId: userId,
-            timeStamp: message.timeStamp,
+            userId: parseInt(sessionStorage.getItem("nutshell_user")),
+            timeStamp: Date.now(message.timeStamp),
         }
         addMessage(newMessage).then(() => history.push("/messages"))
         
@@ -69,7 +66,7 @@ export const MessageForm = () => {
                     />
                 </div>
             </fieldset>
-            <fieldset>
+            {/* <fieldset>
                 <div className="form-group">
                     <label htmlFor="date">message sent to</label>
                     <select
@@ -87,7 +84,7 @@ export const MessageForm = () => {
                         ))}
                     </select>
                 </div>
-            </fieldset>
+            </fieldset> */}
         <button className="btn btn-primary" onClick={handleClickSaveMessage}>
             Save Message
         </button>
