@@ -16,6 +16,7 @@ export const ArticleList = () => {
 
   return (
     <>
+    <h2>News</h2>
     <button onClick={() => {history.push("/articles/create")}}>
     Add Article
     </button>
