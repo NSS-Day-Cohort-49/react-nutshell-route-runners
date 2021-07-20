@@ -20,6 +20,7 @@ export const TaskList = () => {
                 Add Task
             </button>
             <div className="tasks">
+                {/* the "if" statement code inside the .map makes the messages private */}
                 {
                     tasks.map(task => { 
                         if (task.isComplete === false) {
