@@ -80,7 +80,8 @@
     font-style: oblique;
     font-weight: bolder;
     background-color:#ddddff;
-    font-size: 16px;
+    font-size: 20px;
+    border-radius: .5em;
 
 }
 
@@ -94,8 +95,39 @@
     font-weight:  light;
     background-color: snow;
     font-size: 16px;
+    border-radius: .5em;
 
 
 }
 
-  
+.form-group {
+    flex:auto;
+    border: 4px solid rgb(173, 160, 255);
+    border-radius: .5em;
+    min-width: 1000px;
+    box-shadow: 2px 25px 25px 5px #000000;
+    margin: 2em;
+    font-style: oblique;
+    font-weight: bolder;
+    background: -webkit-gradient(linear, left top, left bottom, from(#e6e2f9), to(#656fd4));
+    font-size: 16px;
+
+}
+
+.events__Form, .allEvents{
+    background-color: lightcyan;
+    font-style: oblique;
+    font-weight: bolder;
+    min-height: 700px;
+
+}
+
+.eventList {
+    background-color: lightcyan;
+   
+}
+.eventName, .eventDate,.eventLocation {
+    margin-top: .5em;
+    margin-left: .5em;
+    
+}
