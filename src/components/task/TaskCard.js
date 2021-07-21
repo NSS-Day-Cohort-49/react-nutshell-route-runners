@@ -21,15 +21,19 @@ export const TaskCard = ({ task }) => {
 
     return (
         <section className="task">
-            <h3 className="task__name">{task.name}</h3>
-            <div className="task__date">{task.date}</div>
+        <section className="taskList" id="taskId">
+            <h3 className="task__name">Task: {task.name}</h3>
+            <div className="task__date">Date: {task.date}</div>
+        </section>
+        <div className="taskButtons"> 
             <button onClick={() => { deleteTask(task.id) }}>Delete Task</button>
             <button className="taskButton" onClick={() => {
                 history.push(`/tasks/edit/${task.id}`)
-              }}>Edit</button>
+            }}>Edit</button>
             <label htmlFor="checkbox">Mark as complete</label>
             <input type="checkbox" id="checkbox" unchecked="" onChange={handleCheckBox} />
+        </div>
 
-        </section>
+    </section>
     )
 }
