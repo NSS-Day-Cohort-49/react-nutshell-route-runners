@@ -149,7 +149,7 @@ export const MessageForm = () => {
                 />
             </div>
         </fieldset>
-        <fieldset>
+        {/* <fieldset>
             <div className="form-group">
                 <label htmlFor="date">message sent to</label>
                 <select
@@ -167,7 +167,7 @@ export const MessageForm = () => {
                     ))}
                 </select>
             </div>
-        </fieldset>
+        </fieldset> */}
         <button className="btn btn-primary"
         disabled={isLoading}
         onClick={event => {
