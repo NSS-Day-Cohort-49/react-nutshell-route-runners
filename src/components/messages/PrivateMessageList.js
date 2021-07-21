@@ -6,7 +6,7 @@ import { FriendContext } from "../friend/FriendProvider"
 import "./Message.css"
 
 export const MessageList = () => {
-    const { getFriends, friends } = useContext(FriendContext)
+    const { getFriends, friend } = useContext(FriendContext)
     const { getMessages, messages } = useContext(MessageContext)
     const history = useHistory()
 
@@ -27,7 +27,8 @@ export const MessageList = () => {
             {
                 messages.map(message => {
                     if(
-                        message.userId == sessionStorage.getItem("nutshell_user")  || friends.find( friend => message.userId === friend.userId)
+                        message.userId == sessionStorage.getItem("nutshell_user")  
+                        // || messages.find( friend => message.userId === friend.userId)
                     )
                 return <MessageCard key={message.id} message={message} />
                 })

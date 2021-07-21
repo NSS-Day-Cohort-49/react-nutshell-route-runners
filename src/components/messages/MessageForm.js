@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router-dom"
 import { MessageContext } from "./MessageProvider"
-// import { UserContext } from "../user/UserProvider"
+import { FriendContext } from "../friend/FriendProvider"
 
 export const MessageForm = () => {
     const { addMessage, getMessageById, updateMessage } = useContext(MessageContext)
-    // const { users, getUsers } = useContext(UserContext)
+    const { users, getUsers } = useContext(FriendContext)
 
     // const [message, setMessage] = useState({
     //         textArea: "",
@@ -25,7 +25,9 @@ export const MessageForm = () => {
 	const history = useHistory();
 
     
-
+    useEffect(() => {
+        getUsers()
+    }, [])
 
     // const handleControlledInputChange = (event) => {
     //     const newMessage = { ...message }
@@ -45,6 +47,9 @@ export const MessageForm = () => {
         if (controlEvent.target.id.includes("Id")) {
         selectedVal = parseInt(selectedVal)
         }
+        // if (controlEvent.target.id == 0){
+        // selectedVal = 
+        // }
         newMessage[controlEvent.target.id] = selectedVal
         setMessage(newMessage)
     }
@@ -144,7 +149,7 @@ export const MessageForm = () => {
                 />
             </div>
         </fieldset>
-        {/* <fieldset>
+        <fieldset>
             <div className="form-group">
                 <label htmlFor="date">message sent to</label>
                 <select
@@ -162,7 +167,7 @@ export const MessageForm = () => {
                     ))}
                 </select>
             </div>
-        </fieldset> */}
+        </fieldset>
         <button className="btn btn-primary"
         disabled={isLoading}
         onClick={event => {
