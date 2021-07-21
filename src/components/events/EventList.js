@@ -2,10 +2,13 @@ import React, { useContext, useEffect } from "react"
 import { useHistory } from "react-router-dom"
 import { EventContext } from "./EventProvider"
 import { EventCard } from "./EventCard"
+import { FriendContext } from "../friend/FriendProvider"
 import "./Event.css"
 
 export const EventList = () => {
- 
+
+const { friends, getFriends } = useContext(FriendContext)
+
 const { events, getEvents } = useContext(EventContext)    
 const history = useHistory()
 
@@ -14,7 +17,8 @@ let sortedEvents = events.sort((a,b) => {
   })
 
 useEffect(() => {
-    getEvents()
+  getFriends()
+    .then(getEvents)
 }, [])
 
   return (
@@ -28,9 +32,10 @@ useEffect(() => {
       {
        
         sortedEvents.map(event => {
-          return <EventCard key={event.id}
-                      event={event} />
-        })
+        if (
+            event.userId == sessionStorage.getItem("nutshell_user") || friends.find(friend => event.userId === friend.userId)
+          ){                    return <EventCard key={event.id} event={event} />
+        }})
       }
     </div>
    </> 

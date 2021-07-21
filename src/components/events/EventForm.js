@@ -67,8 +67,8 @@ export const EventForm = () => {
             id: eventId,
             name: event.name,
             date: event.date,
-            locationId: locationId
-            
+            locationId: locationId,
+            userId: parseInt(sessionStorage.getItem("nutshell_user"))
         })
         .then(() => history.push("/events"))
     } else {
@@ -76,7 +76,7 @@ export const EventForm = () => {
                 name: event.name,
                 date: event.date,
                 locationId: locationId,
-                
+                userId: parseInt(sessionStorage.getItem("nutshell_user"))
             })
             .then(() => history.push("/events"))
           }

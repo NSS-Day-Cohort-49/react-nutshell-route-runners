@@ -26,7 +26,7 @@ export const FriendCard = ({ user }) => {
         )
     }
     else return (
-        <section className="friend">
+        <section className="friend__card">
             <h3 className="friend__name">{user.name}</h3>
             <button onClick={() => { handleAddFriend(user.id) }}>Add Friend</button>
 

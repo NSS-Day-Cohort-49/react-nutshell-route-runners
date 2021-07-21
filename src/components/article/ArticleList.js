@@ -2,16 +2,19 @@ import React, { useContext, useEffect } from "react"
 import { useHistory } from 'react-router-dom';
 import { ArticleContext } from "./ArticleProvider"
 import { ArticleCard } from "./ArticleCard"
+import { FriendContext } from "../friend/FriendProvider"
 import "./Article.css"
 
 export const ArticleList = () => {
+
+  const { friends, getFriends } = useContext(FriendContext)
 
   const { articles, getArticles } = useContext(ArticleContext)
   const history = useHistory()
 
   useEffect(() => {
-    getArticles()
-
+    getFriends()
+    .then(getArticles)
   }, [])
 
   return (
@@ -23,8 +26,10 @@ export const ArticleList = () => {
     <div className="articles">
       {
         articles.map(article => {
-          return <ArticleCard key={article.id} article={article} />
-        })
+          if (
+            article.userId == sessionStorage.getItem("nutshell_user") || friends.find(friend => article.userId === friend.userId)
+          ){          return <ArticleCard key={article.id} article={article} />
+        }})
       }
     </div>
     </>

@@ -22,20 +22,21 @@ import { MessageDetail } from "./messages/MessageDetail"
 export const ApplicationViews = () => {
   return (
     <>
+      <FriendProvider>
+        <ArticleProvider>
+          <Route exact path="/">
+              <ArticleList />
+          </Route>
 
-      <ArticleProvider>
-        <Route exact path="/">
-            <ArticleList />
-        </Route>
+          <Route exact path="/articles/create">
+              <ArticleForm />
+          </Route>
 
-        <Route exact path="/articles/create">
+          <Route path="/articles/edit/:articleId(\d+)">
             <ArticleForm />
-        </Route>
-
-        <Route path="/articles/edit/:articleId(\d+)">
-          <ArticleForm />
-        </Route>
-      </ArticleProvider>
+          </Route>
+        </ArticleProvider>
+      </FriendProvider>
       
       <FriendProvider>
         <Route path="/friends/create">
@@ -47,7 +48,7 @@ export const ApplicationViews = () => {
       </FriendProvider>
     
       <MessageProvider>
-        {/* <UserProvider> */}
+
           <Route exact path="/messages">
             <MessageList />
           </Route>
@@ -60,12 +61,12 @@ export const ApplicationViews = () => {
           <Route path="/messages/edit/:messageId(\d+)">
               <MessageForm />
           </Route>
-        {/* </UserProvider> */}
+
       </MessageProvider>
       
       <TaskProvider>
         <Route exact path="/tasks">
-          {/* Render the component for the user's tasks */}
+
           <TaskList />
         </Route>
 
@@ -79,24 +80,29 @@ export const ApplicationViews = () => {
 
       </TaskProvider>
       <Route path="/events">
-        {/* Render the component for the user's events */}
+
       </Route>
       <Route path="/tasks">
-        {/* Render the component for the user's tasks */}
+
       </Route>
-      <EventProvider>
-      <LocationProvider>
-        <Route exact path="/events">
-          <EventList />
-        </Route>
-        <Route path="/events/create">
-          <EventForm />
-        </Route>
-        <Route path="/events/edit/:eventId(\d+)">
-          <EventForm />
-        </Route>
-       </LocationProvider>
-      </EventProvider>
+      <FriendProvider>
+        <EventProvider>
+          <LocationProvider>
+            <Route exact path="/events">
+              <EventList />
+            </Route>
+
+            <Route path="/events/create">
+              <EventForm />
+            </Route>
+
+            <Route path="/events/edit/:eventId(\d+)">
+              <EventForm />
+            </Route>
+
+          </LocationProvider>
+        </EventProvider>
+      </FriendProvider>
     </>
   )
 }
