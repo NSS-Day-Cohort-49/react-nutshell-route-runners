@@ -22,20 +22,21 @@ import { MessageDetail } from "./messages/MessageDetail"
 export const ApplicationViews = () => {
   return (
     <>
+      <FriendProvider>
+        <ArticleProvider>
+          <Route exact path="/">
+              <ArticleList />
+          </Route>
 
-      <ArticleProvider>
-        <Route exact path="/">
-            <ArticleList />
-        </Route>
+          <Route exact path="/articles/create">
+              <ArticleForm />
+          </Route>
 
-        <Route exact path="/articles/create">
+          <Route path="/articles/edit/:articleId(\d+)">
             <ArticleForm />
-        </Route>
-
-        <Route path="/articles/edit/:articleId(\d+)">
-          <ArticleForm />
-        </Route>
-      </ArticleProvider>
+          </Route>
+        </ArticleProvider>
+      </FriendProvider>
       
       <FriendProvider>
         <Route path="/friends/create">
