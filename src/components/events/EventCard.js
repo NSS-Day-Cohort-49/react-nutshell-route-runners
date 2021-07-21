@@ -29,7 +29,7 @@ import React, { useContext }from "react"
       </section>
       <article className="weatherAndButtons">
           <img className="weatherPic" src="https://media.gettyimages.com/photos/concept-photo-oxygen-with-white-cloud-picture-id1176356747?k=6&m=1176356747&s=612x612&w=0&h=65o22MsDpULjY-Y0X2X3ajpPSy2X5_ciTkzHZQBHjTA=" alt=""></img>
-          
+          <article className="weather__container"></article>
           <div className="eventButtons">
           <button className="eventButton" onClick={() => {
               history.push(`/events/edit/${event.id}`)

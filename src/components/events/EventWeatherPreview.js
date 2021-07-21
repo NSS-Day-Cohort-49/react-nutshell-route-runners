@@ -1,5 +1,5 @@
 import { Weather } from './EventWeather.js'
-import { getWeather, useWeather } from './EventWeatherProvider.js'
+import { useWeather } from './EventWeatherProvider.js'
 
 
 const contentTarget = document.querySelector(".weather__container")
@@ -24,12 +24,3 @@ export const WeatherPreview = () => {
         render(weatherArray)
 }
 
-eventHub.addEventListener("coordinates", event =>{
-   
-    const weatherCoordinates = event.location
-
-    getWeather(weatherCoordinates).then(() => {
-       
-        WeatherPreview()
-    })
-})
