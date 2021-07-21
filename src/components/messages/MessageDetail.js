@@ -3,8 +3,6 @@ import { MessageContext } from "./MessageProvider"
 import { useParams, useHistory } from "react-router-dom"
 
 
-
-
 export const MessageDetail = () => {
     const { getMessageById, releaseMessage } = useContext(MessageContext)
 
@@ -34,6 +32,7 @@ export const MessageDetail = () => {
         <h3 className="message__textArea">{message.textArea}</h3>
         <div className="message__user">user: {message.user?.name}</div>
         <button onClick={handleRelease}>Release Message</button>
+        <button onClick={() => {history.push(`/messages/edit/${message.id}`)}}>Edit</button>
         </section>
     )
     }

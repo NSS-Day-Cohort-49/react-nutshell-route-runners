@@ -25,11 +25,11 @@ import React, { useContext }from "react"
       <section className="eventList" id="eventId">
           <h3 className="eventName">{event.name}</h3>
           <div className="eventDate">Date:  {event.date}</div>
-          <div className="eventLocation">Location:  {event.location}</div>
+          <div className="eventLocation">Location:  {event.location.name}</div>
       </section>
       <article className="weatherAndButtons">
           <img className="weatherPic" src="https://media.gettyimages.com/photos/concept-photo-oxygen-with-white-cloud-picture-id1176356747?k=6&m=1176356747&s=612x612&w=0&h=65o22MsDpULjY-Y0X2X3ajpPSy2X5_ciTkzHZQBHjTA=" alt=""></img>
-          <section className="weather__container"></section>
+          
           <div className="eventButtons">
           <button className="eventButton" onClick={() => {
               history.push(`/events/edit/${event.id}`)
