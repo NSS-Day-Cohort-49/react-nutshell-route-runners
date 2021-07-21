@@ -19,7 +19,40 @@
 
   .eventButton {
       margin: .25em
+      
   }
+  .button, .eventButton {
+    border-top: 1px solid #96d1f8;
+    background: #656fd4;
+    background: -webkit-gradient(linear, left top, left bottom, from(#c7c0f0), to(#656fd4));
+    background: -webkit-linear-gradient(top, #c7c0f0, #656fd4);
+    background: -moz-linear-gradient(top, #c7c0f0, #656fd4);
+    background: -ms-linear-gradient(top, #c7c0f0, #656fd4);
+    background: -o-linear-gradient(top, #c7c0f0, #656fd4);
+    padding: 8.5px 17px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    box-shadow: rgba(0,0,0,1) 0 1px 0;
+    text-shadow: rgba(0,0,0,.4) 0 1px 0;
+    color: white;
+    font-size: 15px;
+    font-family: Georgia, serif;
+    text-decoration: none;
+    vertical-align: middle;
+    margin: .25em
+    }
+ .button:hover ,.eventButton:hover {
+    border-top-color: #1b90de;
+    background: #1b90de;
+    color: #ccc;
+    }
+ .button:active, .eventButton:active {
+    border-top-color: #7c82da;
+    background: #7c82da;
+    }
 
   .eventCard {
     display: flex;
@@ -46,20 +79,20 @@
     margin: 2em;
     font-style: oblique;
     font-weight: bolder;
-    background-color:#f8f8ff;
+    background-color:#ddddff;
     font-size: 16px;
 
 }
 
 .allEvents > .eventCard ~ .eventCard {
-    border: 8px solid rgb(199, 192, 240);
+    border: 8px solid rgb(167, 152, 249);
     max-width: 500px;
     min-width: 500px;
     box-shadow: 5px 5px 15px 5px #000000;
     margin: 1em;
     font-style: italic;
     font-weight:  light;
-    background-color: cornsilk;
+    background-color: snow;
     font-size: 16px;
 
 

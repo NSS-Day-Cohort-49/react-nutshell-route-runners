@@ -3,6 +3,8 @@ import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router-dom"
 import { EventContext } from "./EventProvider"
 import { LocationContext } from "./LocationProvider.js"
+import { getWeather } from './EventWeatherProvider.js'
+import { WeatherPreview } from "./EventWeatherPreview.js" 
 import "./Event.css"
 
 export const EventForm = () => {
@@ -37,14 +39,19 @@ export const EventForm = () => {
           newEvent[controlEvent.target.id] = selectedVal
           setEvent(newEvent)
         }
-    //   const handleLocationSelect = (handleEvent) => {
-    //       if (handleEvent.target.id === "locationId"){
-    //       const selectedLocation = handleEvent.target.value
-    //       const weatherLocation = locations.find(location => location.id === selectedLocation)
-    //       const weatherLocationEvent = new 
-           
+      const handleLocationSelect = (handleEvent) => {
+          if (handleEvent.target.id === "locationId"){
+          const selectedLocation = handleEvent.target.value
+          const weatherLocation = locations.find(location => location.id === selectedLocation)
+        
+          const weatherCoordinates = weatherLocation.location
 
-    //   }}
+          getWeather(weatherCoordinates).then(() => {
+             
+              WeatherPreview()
+          })
+
+      }}
 
       const handleClickSaveEvent = (controlEvent) => {
         controlEvent.preventDefault() 
@@ -123,7 +130,7 @@ export const EventForm = () => {
               </select>
                 </div>
           </fieldset>
-            <button className="btn btn-primary"
+            <button className="button"
              disabled={isLoading}
             onClick={handleClickSaveEvent}> 
             Save Event
