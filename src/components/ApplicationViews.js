@@ -48,7 +48,7 @@ export const ApplicationViews = () => {
       </FriendProvider>
     
       <MessageProvider>
-
+        <FriendProvider>
           <Route exact path="/messages">
             <MessageList />
           </Route>
@@ -61,7 +61,7 @@ export const ApplicationViews = () => {
           <Route path="/messages/edit/:messageId(\d+)">
               <MessageForm />
           </Route>
-
+        </FriendProvider>
       </MessageProvider>
       
       <TaskProvider>
